@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Roboto",sans-serif;
+}
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+    display: none;
+}
+
+.loader.show{
+    display: block;
+}
+
+.loader::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 80px;
+    height: 80px;
+    background: #FFF;
+    border-radius: 20px;
+    border: 5px solid #ff0000;
+    animation: loading 1000ms ease-in-out infinite;
+}
+
+@keyframes loading{
+    0%, 100%{
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    }
+    50%{
+        transform: translate(-50%, -50%) scale(1) rotate(360deg);
+    }
+}
+
+#download-frame{
+    display: none;
+}
+
+.app{
+    width: 100%;min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app .container{
+    text-align: center;
+    width: 95%;
+    max-width: 650px;
+}
+
+.app h1{
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.app p{
+    color: #aaa;
+    font-size: 18px;
+}
+
+.app .form{
+    display: flex;
+    margin: 40px 0px 20px;
+}
+
+.app .form input{
+    padding: 15px;
+    font-size: 16px;
+    outline: none;
+    border: 2px solid #ff0000;
+    border-radius: 10px 0px 0px 10px;
+    flex: 1;
+}
+
+.app .form button{
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: #ff0000;
+    color: #FFF;
+    border-radius: 0px 10px 10px 0px;
+}
+
+
+.notifocation{
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    opacity: 0;
+    padding: 10px 20px;
+    background-color: #555;
+    border: 1px solod #222;
+    box-shadow: 0px 0px 5px 10px rgba(0, 0, 0, 0.5);
+    transition: all 300ms ease-in-out;
+}
+
+.notifocation.show{
+    top: 50px;
+    opacity: 1;
+}
+
