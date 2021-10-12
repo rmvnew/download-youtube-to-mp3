@@ -16,13 +16,20 @@ document.querySelector("#download-btn").addEventListener("click",async function(
 
         let audios = data.formats.filter(function(obj){
             return obj.mimeType.includes("audio/webm")
+            // obj.mimeType.includes('video/mp4; codecs="avc1.64002A"')
+            // obj.videoCodec = "avc1.640028"
+            // obj.quality = 'hd720'
+          
+            return obj
         })
 
         let filename = data.videoDetails.title.replace(/\s{1,}/,"-")+".mp3"
+        // let filename = data.videoDetails.title.replace(/\s{1,}/,"-")+".mp4"
+        notify(`${filename} sera baixado automaticamente.`)
 
         let itag = audios[0].itag
 
-        notify(`"${filename}" sera baixado automaticamente.`)
+        
 
         document.querySelector("#download-frame").src = `/download?videoURL=${video}&itag=${itag}&filename=${filename}`
 
@@ -36,7 +43,7 @@ document.querySelector("#download-btn").addEventListener("click",async function(
 function notify(message){
     let notification = document.createElement("div")
     notification.classList.add("notification")
-    notification.innerTex = message
+    notification.innerHTML = message
     document.body.appendChild(notification)
     setTimeout(function(){
         notification.classList.add("show")
